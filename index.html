@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="uk"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Надія 22.10</title>
+<style>
+:root{--bg:#f6f5fb;--card:#fff;--tx:#2d2a45;--mu:#6b6885;--bd:#ddd8f3;--ac:#6c5ce7;--acl:#ece9ff;--ok:#1f9d63;--okb:#dff5ea;--no:#d63c4a;--nob:#fde3e5;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#17162a;--card:#222040;--tx:#ecebf7;--mu:#a5a2c4;--bd:#3a3763;--ac:#9a8cff;--acl:#2c2956;--ok:#52d19a;--okb:#1d3d33;--no:#ff7b86;--nob:#47232b}}
+:root[data-theme="dark"]{--bg:#17162a;--card:#222040;--tx:#ecebf7;--mu:#a5a2c4;--bd:#3a3763;--ac:#9a8cff;--acl:#2c2956;--ok:#52d19a;--okb:#1d3d33;--no:#ff7b86;--nob:#47232b}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.4 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:860px;margin:0 auto;padding:20px 14px 40px}
+h1{text-align:center;font-size:1.5rem;margin:8px 0 14px}
+.b{font:inherit;font-weight:600;border:1px solid var(--bd);background:var(--card);color:var(--tx);border-radius:12px;padding:12px 18px;cursor:pointer}
+.b:hover{border-color:var(--ac)}
+.pri{background:var(--ac);color:#fff;border-color:var(--ac)}
+#go{display:block;margin:0 auto 18px;font-size:1.1rem;padding:14px 38px}
+.r{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
+.wd{position:relative;background:var(--acl);border:1px solid var(--bd);border-radius:12px;padding:20px 12px;text-align:center;font-weight:700;display:flex;align-items:center;justify-content:center}
+.wd i{position:absolute;left:12px;top:6px;font-style:normal;font-weight:400;color:var(--mu);font-size:.8rem}
+.df{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:12px;text-align:center;display:flex;align-items:center;justify-content:center}
+#m{position:fixed;inset:0;background:rgba(20,18,40,.55);display:none;align-items:center;justify-content:center;padding:14px;z-index:5}
+#m.on{display:flex}
+.box{background:var(--bg);border-radius:18px;width:100%;max-width:560px;max-height:92vh;overflow:auto;padding:18px}
+.hd{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:14px}
+.hd h2{margin:0;font-size:1.15rem;flex:1;text-align:center}
+.x{border:0;background:none;color:var(--mu);font-size:1.4rem;cursor:pointer;width:36px}
+.g{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.g .b{padding:22px 8px;border-radius:14px;font-size:1rem}
+.g .b span{display:block;font-size:1.7rem;margin-bottom:6px}
+.g .wide{grid-column:1/3;background:var(--acl);border-color:var(--ac)}
+.c{text-align:center}
+.fc{min-height:190px;display:flex;align-items:center;justify-content:center;padding:20px;background:var(--card);border:1px solid var(--bd);border-radius:16px;font-size:1.8rem;font-weight:700;cursor:pointer;margin-bottom:14px;text-align:center}
+.row{display:flex;gap:10px;justify-content:center;align-items:center;flex-wrap:wrap}
+.q{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:16px;margin-bottom:12px;font-size:1.3rem;text-align:center;font-weight:600}
+.o{display:block;width:100%;margin-bottom:8px;text-align:left}
+.ok{background:var(--okb)!important;border-color:var(--ok)!important}
+.no{background:var(--nob)!important;border-color:var(--no)!important}
+.sel{background:var(--acl);border-color:var(--ac)}
+.mc{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.mc .b{font-size:.9rem;font-weight:500;padding:10px}
+.mc .b[disabled]{opacity:.35}
+input{font:inherit;width:100%;padding:12px;border-radius:12px;border:1px solid var(--bd);background:var(--card);color:var(--tx);margin-bottom:10px}
+.mu{color:var(--mu);font-size:.9rem;margin-bottom:8px}
+</style></head><body>
+<main>
+<h1>Надія 22.10</h1>
+<button class="b pri" id="go">Practice</button>
+<div id="tb"></div>
+</main>
+<div id="m"><div class="box"><div class="hd"><button class="x" id="bk">←</button><h2 id="ti"></h2><button class="x" id="cl">✕</button></div><div id="mb"></div></div></div>
+<script>
+const W=[["next to","поруч з"],["across from","навпроти / через дорогу від"],["between","між"],["on the corner","на розі"],["on the corner of the street","на розі вулиці"],["on the left","зліва"],["on the right","справа"],["turn right","повернути праворуч"],["turn left","повернути ліворуч"],["go straight ahead","іти прямо"],["near here","поблизу"],["ATM / cash machine","банкомат"],["suddenly","раптом"],["ring","дзвонити, дзвеніти"],["cell phone","мобільний телефон"],["check","перевірити"],["purse","сумочка"],["still","досі, все ще"],["behind","позаду"],["pick up","підняти"],["answer","відповідати"],["forget","забувати"],["find","знайти"],["tell","розповідати"],["quiet","тихо"],["sure","впевнений, звісно"],["hair","волосся"],["subway","метро"],["remember","пам’ятати"],["grocery store","продуктовий магазин"],["then","потім, тоді"],["everyone / everybody","всі"],["guy","хлопець"],["send","надсилати"],["smile","посмішка, посміхнутися"],["put","покласти"],["fall","впасти"]];
+const $=s=>document.querySelector(s),sh=a=>[...a].sort(()=>Math.random()-.5);
+$("#tb").innerHTML=W.map((w,i)=>`<div class="r"><div class="wd"><i>${i+1}</i>${w[0]}</div><div class="df">${w[1]}</div></div>`).join("");
+const body=h=>$("#mb").innerHTML=h,title=t=>$("#ti").textContent=t;
+$("#go").onclick=()=>{$("#m").classList.add("on");menu()};
+$("#cl").onclick=()=>$("#m").classList.remove("on");
+$("#bk").onclick=()=>menu();
+function menu(){title("Оберіть режим");$("#bk").style.visibility="hidden";
+body(`<div class="g"><button class="b" data-k="cards"><span>🃏</span>Картки</button><button class="b" data-k="match"><span>🔗</span>З’єднати</button><button class="b" data-k="write"><span>✏️</span>Написати</button><button class="b" data-k="choice"><span>✅</span>Вибір</button><button class="b wide" data-k="test"><span>🎯</span>Тест</button></div>`);
+document.querySelectorAll("[data-k]").forEach(b=>b.onclick=()=>{$("#bk").style.visibility="visible";({cards,match,write:()=>quiz("write"),choice:()=>quiz("choice"),test:()=>quiz("test")})[b.dataset.k]()})}
+function cards(){title("Картки");const d=sh(W);let i=0,f=false;
+const r=()=>{body(`<div class="mu c">${i+1} / ${d.length}</div><div class="fc" id="fc">${d[i][f?0:1]}</div><div class="row"><button class="b" id="p">←</button><button class="b" id="n">→</button></div>`);
+$("#fc").onclick=()=>{f=!f;r()};$("#p").onclick=()=>{i=(i-1+d.length)%d.length;f=false;r()};$("#n").onclick=()=>{i=(i+1)%d.length;f=false;r()}};r()}
+function match(){title("З’єднати");const s=sh(W).slice(0,8);let L=sh(s),R=sh(s),a=null,done=0;
+body(`<div class="mc"><div id="l"></div><div id="r"></div></div><div id="e"></div>`);
+const mk=(c,arr,k)=>{$(c).innerHTML=arr.map((x,j)=>`<button class="b o" data-j="${j}">${x[k]}</button>`).join("")};
+mk("#l",L,0);mk("#r",R,1);
+const bs=c=>[...document.querySelectorAll(c+" .b")];
+bs("#l").forEach((b,j)=>b.onclick=()=>{if(b.disabled)return;bs("#l").forEach(x=>x.classList.remove("sel"));b.classList.add("sel");a=j});
+bs("#r").forEach((b,j)=>b.onclick=()=>{if(a===null||b.disabled)return;const lb=bs("#l")[a];
+if(L[a]===R[j]){[lb,b].forEach(x=>{x.classList.remove("sel");x.classList.add("ok");x.disabled=true});done++;a=null;
+if(done==8)$("#e").innerHTML=`<div class="c" style="margin-top:12px"><button class="b pri" id="a">Ще раз</button></div>`,$("#a").onclick=match}
+else{b.classList.add("no");setTimeout(()=>b.classList.remove("no"),500)}})}
+function quiz(kind){title({write:"Написати",choice:"Вибір",test:"Тест"}[kind]);
+const qs=sh(W).slice(0,kind=="test"?10:20);let i=0,sc=0;
+const step=()=>{if(i>=qs.length){body(`<div class="c"><h2 style="font-size:2rem">${sc} / ${qs.length}</h2><button class="b pri" id="r">Ще раз</button></div>`);$("#r").onclick=()=>quiz(kind);return}
+const q=qs[i],t=kind=="test"?(i%2?"write":"choice"):kind,head=`<div class="mu c">${i+1} / ${qs.length}</div><div class="q">${q[1]}</div>`;
+const next=()=>`<div class="c"><button class="b pri" id="nx">${i+1==qs.length?"Результат":"Далі"}</button></div>`;
+const go=()=>{$("#nx").onclick=()=>{i++;step()}};
+if(t=="choice"){const o=sh([q,...sh(W.filter(x=>x!=q)).slice(0,7)]);
+body(head+o.map((x,j)=>`<button class="b o" data-j="${j}">${x[0]}</button>`).join("")+`<div id="z"></div>`);
+document.querySelectorAll(".o").forEach((b,j)=>b.onclick=()=>{const ok=o[j]==q;if(ok)sc++;
+document.querySelectorAll(".o").forEach((x,k)=>{x.disabled=true;if(o[k]==q)x.classList.add("ok")});if(!ok)b.classList.add("no");$("#z").innerHTML=next();go()})}
+else{body(head+`<input id="in" autocomplete="off" autocapitalize="off" placeholder="Type in English…"><div id="z"><div class="c"><button class="b pri" id="ck">Перевірити</button></div></div>`);
+const inp=$("#in");inp.focus();let d=false;
+const chk=()=>{if(d)return;d=true;const v=inp.value.trim().toLowerCase(),a=q[0].toLowerCase(),ok=v==a||a.split("/").map(s=>s.trim()).includes(v);if(ok)sc++;
+inp.disabled=true;inp.classList.add(ok?"ok":"no");$("#z").innerHTML=(ok?"":`<div class="mu c">${q[0]}</div>`)+next();go()};
+$("#ck").onclick=chk;inp.onkeydown=e=>{if(e.key=="Enter")chk()}}};
+step()}
+</script></body></html>
